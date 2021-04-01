@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ModularHouse.Models.House>
+
+@foreach (var item in Model)
+{
+    <div class="grid_hover">
+        <input type="hidden" value="@item.Id" name="id" class="hidden_input" />
+
+        <div class="card_img img">
+            @Html.Raw("<img src=\"data:image/jpeg;base64,"
++ Convert.ToBase64String(item.Image1) + "\" />")
+        </div>
+        <div class="head_cards">
+            <div class="center_head">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+        </div>
+        <div class="info_cards">
+            Общая площадь: <strong>@Html.DisplayFor(modelItem => item.TotalSquare) м<sup><small>2</small></sup></strong>
+            <br>
+            Этажность: <strong>@Html.DisplayFor(modelItem => item.NumberOfStoreys)</strong>
+            <br>
+            Комнаты: <strong>@Html.DisplayFor(modelItem => item.Rooms)</strong>
+            <br>
+            Санузлы: <strong>@Html.DisplayFor(modelItem => item.Bathrooms)</strong>
+            <br>
+            Стоимость от <strong>@Html.DisplayFor(modelItem => item.EconomyConfigurationCost) руб.</strong>
+        </div>
+        <input type="submit" value="Удалить" class="button_delete" id="@item.Id" onClick="getdetails(this)" />
+    </div>
+}

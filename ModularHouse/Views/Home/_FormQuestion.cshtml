@@ -1,0 +1,48 @@
+﻿@model ModularHouse.Models.Question
+
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Name">Имя</label>
+        <div class="col-md-10">
+            <input class="input_txt" id="Name" name="Name" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Surname">Фамилия</label>
+        <div class="col-md-10">
+            <input class="input_txt" id="Surname" name="Surname" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="EmailAddress">Электронный адрес</label>
+        <div class="col-md-10">
+            <input class="input_txt" id="EmailAddress" name="EmailAddress" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="QuestionTopic">Вопрос</label>
+        <div class="col-md-10">
+            <textarea class="text_area" id="QuestionTopic" name="QuestionTopic"></textarea>
+            <span class="field-validation-valid text-danger" data-valmsg-for="QuestionTopic" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Отправить" class="input_button" onClick="return Formdata(this.form)">
+        </div>
+    </div>
+</div>
+<div class="successful_shipment">
+    <h3>@ViewBag.Message</h3>
+</div>

@@ -1,0 +1,79 @@
+﻿@model ModularHouse.Models.Question
+
+@{
+    ViewBag.Title = "О компании";
+}
+
+<h2>Наши преимущества - Ваш успех.</h2>
+<ul>
+    <li>
+        МЫ СОЗДАЛИ – новую, не имеющую аналогов услугу на рынке: проектирование, строительство, комплектация и реализация объекта «ПОД КЛЮЧ» выполняются одной командой.
+    </li>
+    <li>
+        ЭКОНОМЬТЕ СВОЕ ЛИЧНОЕ ВРЕМЯ – получая полный комплекс профессиональных услуг и подбор материалов по хорошим цена в одном месте. Вам не нужно бегать по магазинам, рынкам, производственным цехам - наши дизайнеры и менеджеры сделают для Вас подборку материалов и предоставят образцы у нас в офисе.
+    </li>
+    <li>
+        ЭКОНОМЬТЕ СВОИ ДЕНЬГИ – избегая ошибок в процессе строительства и ремонта, а так же благодаря точным срокам реализации услуг. Когда работает одна команда, в конце не возникает вопрос «а кто же все-таки шил костюм?», мы берем на себя ответственность за результат.
+    </li>
+    <li>
+        УПРАВЛЯЙТЕ СВОИМ БЮДЖЕТОМ – только мы можем предоставить точную смету по строительству и полной комплектации объекта до начала его строительства. Это дает Вам возможность узнать и запланировать свои расходы, а при необходимости скорректировать, удешевить проект и получить качественный продукт с уникальной гарантией.
+    </li>
+    <li>
+        ЗАЩИЩАЙТЕ СВОИ ИНВЕСТИЦИИ – наша компания дает гарантии на выполнение работы, использованные материалы, сроки и стоимость выполнения работ. Не пользуйтесь услугами непроверенных подрядчиков и мастеров – при возникновении проблем Вы рискуете потерять гораздо больше, чем сэкономили. Очень часто сторонние строители изначально дают не полную и неточную смету, чтобы взять работу, поэтому Вы можете не уложиться в изначально запланированный бюджет.
+    </li>
+</ul>
+<h2>Остались вопросы?</h2>
+<h3>Оставьте Ваши данные и мы свяжемся с Вами</h3>
+
+@using (Ajax.BeginForm("_FormQuestion", new AjaxOptions
+{
+    UpdateTargetId = "form_question",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    <div id="form_question">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Name">Имя</label>
+                <div class="col-md-10">
+                    <input class="input_txt" id="Name" name="Name" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Surname">Фамилия</label>
+                <div class="col-md-10">
+                    <input class="input_txt" id="Surname" name="Surname" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="EmailAddress">Электронный адрес</label>
+                <div class="col-md-10">
+                    <input class="input_txt" id="EmailAddress" name="EmailAddress" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="QuestionTopic">Вопрос</label>
+                <div class="col-md-10">
+                    <textarea class="text_area" id="QuestionTopic" name="QuestionTopic"></textarea>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="QuestionTopic" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Отправить" class="input_button" onClick="return Formdata(this.form)">
+                </div>
+            </div>
+        </div>
+    </div>
+}

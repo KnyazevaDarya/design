@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ModularHouse.Models.Question>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int count = 0;
+}
+
+<script src="~/Scripts/editValue.js"></script>
+
+@using (Ajax.BeginForm("_ViewQuestion", new AjaxOptions
+{
+    UpdateTargetId = "questions",
+    Confirm = "Вы действительно хотите удалить вопрос?",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="questions">
+        @foreach (var item in Model)
+        {
+            count++;
+            <div class="question_card">
+                <input type="hidden" value="@item.Id" name="id" class="hidden_input" />
+                <h3>Имя</h3>
+                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                <hr>
+                <h3>Фамилия</h3>
+                <p>@Html.DisplayFor(modelItem => item.Surname)</p>
+                <hr>
+                <h3>Электронный адрес</h3>
+                <p>@Html.DisplayFor(modelItem => item.EmailAddress)</p>
+                <hr>
+                <h3>Вопрос</h3>
+                <p>@Html.DisplayFor(modelItem => item.QuestionTopic)</p>
+                <hr>
+                <input type="submit" value="Удалить" class="input_button" id="@item.Id" onClick="getdetails(this)"/>
+            </div>
+        }
+    </div>
+}
+
+@{ 
+    if (count == 0)
+    {
+        <h2>Нет новых вопросов</h2>
+    }
+}

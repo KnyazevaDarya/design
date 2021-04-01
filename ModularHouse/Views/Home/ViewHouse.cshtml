@@ -1,0 +1,131 @@
+﻿@model ModularHouse.Models.House
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="slider">
+    <div class="item">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+        + Convert.ToBase64String(Model.Image1) + "\" />")
+    </div>
+    <div class="item">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+        + Convert.ToBase64String(Model.Image2) + "\" />")
+    </div>
+    <div class="item">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+        + Convert.ToBase64String(Model.Image3) + "\" />")
+    </div>
+    <div class="item">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+        + Convert.ToBase64String(Model.Image4) + "\" />")
+    </div>
+    <div class="item">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+        + Convert.ToBase64String(Model.Image5) + "\" />")
+    </div>
+    <a class="prev" onclick="minusSlide()">&#10094;</a>
+    <a class="next" onclick="plusSlide()">&#10095;</a>
+    <div class="slider-dots">
+        <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(4)"></span>
+        <span class="slider-dots_item" onclick="currentSlide(5)"></span>
+    </div>
+</div>
+<div class="info_house">
+    <h2>@Html.DisplayFor(modelItem => Model.Name) </h2>
+    <hr>
+    <h2>Общая площадь @Html.DisplayFor(modelItem => Model.ResidentialSquare) м<sup><small>2</small></sup></h2>
+    <h2>С крыльцом и балконом @Html.DisplayFor(modelItem => Model.TotalSquare) м<sup><small>2</small></sup></h2>
+    <h2>Главный фасад @Html.DisplayFor(modelItem => Model.MainFacadeLength) м</h2>
+    <h2>Боковой фасад @Html.DisplayFor(modelItem => Model.SideFacadeLength) м</h2>
+    <h2>Этажность @Html.DisplayFor(modelItem => Model.NumberOfStoreys)</h2>
+    <h2>Комнаты @Html.DisplayFor(modelItem => Model.Rooms)</h2>
+    <h2>Санузлы @Html.DisplayFor(modelItem => Model.Bathrooms)</h2>
+</div>
+
+<br>
+<h2>Комплектации и цены</h2>
+<table class="table_shadow">
+    <tr>
+        <th class="head_table"> </th>
+        <th class="head_table">Полный набор</th>
+        <th class="head_table">Базовая</th>
+        <th class="head_table">Частичный подбор</th>
+        <th class="head_table">Полный набор</th>
+    </tr>
+    <tr>
+        <th class="head_table">Отрисовка общего стиля</th>
+        <td class="body_table_g">+</td>
+        <td class="body_table_g">+</td>
+        <td class="body_table_g">+</td>
+        <td class="body_table_g">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Подбор цветов </th>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">+</td>
+        <td class="body_table_lg">+</td>
+        <td class="body_table_lg">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Подбор фактур</th>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">+</td>
+        <td class="body_table_g">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Окна </th>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">+</td>
+        <td class="body_table_lg">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Перегородки</th>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Отделка фасада</th>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">-</td>
+        <td class="body_table_lg">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Внутреннее обустройство</th>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">-</td>
+        <td class="body_table_g">+</td>
+        <td class="body_table_g">+</td>
+    </tr>
+    <tr>
+        <th class="head_table">Стоимость</th>
+        <td>
+            <div class="body_table_price">
+                @Html.DisplayFor(modelItem => Model.EconomyConfigurationCost) руб.
+            </div>
+        </td>
+        <td>
+            <div class="body_table_price">
+                @Html.DisplayFor(modelItem => Model.BasicConfigurationCost) руб.
+            </div>
+        </td>
+        <td>
+            <div class="body_table_price">
+                @Html.DisplayFor(modelItem => Model.AverageConfigurationCost) руб.
+            </div>
+        </td>
+        <td><div class="body_table_price">@Html.DisplayFor(modelItem => Model.LuxuryConfigurationCost) руб.</div></td>
+    </tr>
+</table>
+<br />
+
+<script src="~/Scripts/slider.js"></script>

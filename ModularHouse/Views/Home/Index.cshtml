@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Главная";
+}
+<!--Слайд-шоу-->
+<div style="margin-left:150px;">
+    <div class="slideshow-container">
+        <div class="gallery5">
+            <div class="mySlides fade">
+                <img src="~/images/Big11.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img src="~/images/1.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img src="~/images/4.png">
+            </div>
+            <div class="mySlides fade">
+                <img src="~/images/5.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+	var slideIndex = 0;
+	carousel();
+
+	function carousel() {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none";
+		}
+		slideIndex++;
+		if (slideIndex > x.length) {slideIndex = 1}
+		x[slideIndex-1].style.display = "block";
+		setTimeout(carousel, 2000);
+	}
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+		  slides[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+		  dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	}
+    </script>
+
+    <h2>Что такое дизайн интерьера ?</h2>
+    <p>
+        Дизайн-проект интерьера – это документ, идея, запечатленная на бумаге, которая даст вам возможность реализовать дизайн своей мечты,
+        а строителям – рассчитать смету и составить план работ по ремонту и обустройству вашего жилья. По этому же документу вы сможете
+        контролировать ремонт на каждом ее этапе, чтобы получить именно то, что вы планировали, и о чем всегда мечтали.
+    </p>
+    <h2>Каковы критерии качественнго дизайн-проекта ?</h2>
+    <ul>
+        <li>Функциональность планировочных решений, практичность и эргономика ;</li>
+        <li>Эстетическая составляющая;</li>
+        <li>Бюджет реализации дизайн-проекта;</li>
+        <li>Правильный подбор мебели и отделочных материалов;</li>
+    </ul>
+    <h2>Чем обусловлена разница цен на дизайн интерьера в разных компаниях?</h2>
+    <p>
+        В поисках компании, которая разработает дизайн-проект интерьера для вашей новой квартиры,
+        вы наверняка столкнетесь с огромным разбросом цен: у одной компании работа может стоить
+        от 7 у.е. за квадратный метр, а у других – до 50 у.е. Почему так происходит?
+
+        Зачастую здесь разница не в цене, а в подмене понятий. Неопытный заказчик, как правило, не знает,
+        что должно входить в стоимость разработки дизайн-проекта, какой его состав. Этим могут пользоваться
+        недобросовестные компании для предоставления максимально заниженных цен, чтобы привлечь клиента. За эти
+        деньги вы получаете неполный спектр услуг по созданию дизайн-проекта, только малую его часть.
+        Это нельзя называть дизан-проектом.
+    </p>

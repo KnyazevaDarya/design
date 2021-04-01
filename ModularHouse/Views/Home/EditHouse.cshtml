@@ -1,0 +1,176 @@
+﻿@model ModularHouse.Models.House
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("EditHouse", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Name">Название дома</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Name" name="Name" type="text" value="@Model.Name">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="error_message">
+            <h4>@ViewBag.Message</h4>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image1">Изображение 1</label>
+            <div class="col-md-10">
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Image1" data-valmsg-replace="true"></span>
+                <div class="editor-field">
+                    <input type="file" name="uI1">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image2">Изображение 2</label>
+            <div class="col-md-10">
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Image2" data-valmsg-replace="true"></span>
+                <div class="editor-field">
+                    <input type="file" name="uI2">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image3">Изображение 3</label>
+            <div class="col-md-10">
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Image3" data-valmsg-replace="true"></span>
+                <div class="editor-field">
+                    <input type="file" name="uI3">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image4">Изображение 4</label>
+            <div class="col-md-10">
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Image4" data-valmsg-replace="true"></span>
+                <div class="editor-field">
+                    <input type="file" name="uI4">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image5">Изображение 5</label>
+            <div class="col-md-10">
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Image5" data-valmsg-replace="true"></span>
+                <div class="editor-field">
+                    <input type="file" name="uI5">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ResidentialSquare">Жилая площадь дома</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Жилая площадь дома должно быть число." data-val-required="Требуется поле Жилая площадь дома." id="ResidentialSquare" name="ResidentialSquare" type="text" value="@Model.ResidentialSquare">
+                <span class="field-validation-valid text-danger" data-valmsg-for="ResidentialSquare" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="TotalSquare">Общая площадь дома</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Общая площадь дома должно быть число." data-val-required="Требуется поле Общая площадь дома." id="TotalSquare" name="TotalSquare" type="text" value="@Model.TotalSquare">
+                <span class="field-validation-valid text-danger" data-valmsg-for="TotalSquare" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="MainFacadeLength">Длина главного фасада</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Длина главного фасада должно быть число." data-val-required="Требуется поле Длина главного фасада." id="MainFacadeLength" name="MainFacadeLength" type="text" value="@Model.MainFacadeLength">
+                <span class="field-validation-valid text-danger" data-valmsg-for="MainFacadeLength" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="SideFacadeLength">Длина бокового фасада</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Длина бокового фасада должно быть число." data-val-required="Требуется поле Длина бокового фасада." id="SideFacadeLength" name="SideFacadeLength" type="text" value="@Model.SideFacadeLength">
+                <span class="field-validation-valid text-danger" data-valmsg-for="SideFacadeLength" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="NumberOfStoreys">Этажность</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Этажность должно быть число." data-val-required="Требуется поле Этажность." id="NumberOfStoreys" name="NumberOfStoreys" type="number" value="@Model.NumberOfStoreys">
+                <span class="field-validation-valid text-danger" data-valmsg-for="NumberOfStoreys" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Rooms">Количество Комнат</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Количество Комнат должно быть число." data-val-required="Требуется поле Количество Комнат." id="Rooms" name="Rooms" type="number" value="@Model.Rooms">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Rooms" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Bathrooms">Количество Санузлов</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Количество Санузлов должно быть число." data-val-required="Требуется поле Количество Санузлов." id="Bathrooms" name="Bathrooms" type="number" value="@Model.Bathrooms">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Bathrooms" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="EconomyConfigurationCost">Стоимость эконом комплектации</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Стоимость эконом комплектации должно быть число." data-val-required="Требуется поле Стоимость эконом комплектации." id="EconomyConfigurationCost" name="EconomyConfigurationCost" type="number" value="@Model.EconomyConfigurationCost">
+                <span class="field-validation-valid text-danger" data-valmsg-for="EconomyConfigurationCost" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="BasicConfigurationCost">Стоимость базовой комплектации </label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Стоимость базовой комплектации  должно быть число." data-val-required="Требуется поле Стоимость базовой комплектации ." id="BasicConfigurationCost" name="BasicConfigurationCost" type="number" value="@Model.BasicConfigurationCost">
+                <span class="field-validation-valid text-danger" data-valmsg-for="BasicConfigurationCost" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="AverageConfigurationCost">Стоимость средней комплектации</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Стоимость средней комплектации должно быть число." data-val-required="Требуется поле Стоимость средней комплектации." id="AverageConfigurationCost" name="AverageConfigurationCost" type="number" value="@Model.AverageConfigurationCost">
+                <span class="field-validation-valid text-danger" data-valmsg-for="AverageConfigurationCost" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LuxuryConfigurationCost">Стоимость люкс комплектации</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="Значением поля Стоимость люкс комплектации должно быть число." data-val-required="Требуется поле Стоимость люкс комплектации." id="LuxuryConfigurationCost" name="LuxuryConfigurationCost" type="number" value="@Model.LuxuryConfigurationCost">
+                <span class="field-validation-valid text-danger" data-valmsg-for="LuxuryConfigurationCost" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="input_button" />
+            </div>
+        </div>
+    </div>
+}

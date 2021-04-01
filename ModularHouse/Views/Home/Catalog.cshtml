@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Каталог";
+}
+
+<script src="~/Scripts/disableCheckBox.js"></script>
+
+@using (Ajax.BeginForm("_CatalogOfHouses", new AjaxOptions
+{
+    UpdateTargetId = "sorting_houses",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+<div class="dropdown">
+    <select name="dropdown_choice" class="dropdown-select">
+        <option value="0">Сортировать…</option>
+        <option value="1" name="type">Дешевле</option>
+        <option value="2" name="type">Дороже</option>
+    </select>
+    
+</div>
+    <input class="inp-cbx" id="cbx" type="checkbox" style="display: none" name="checkbox1_big" value="true" onchange="checkAddress(this)"/>
+    <label class="cbx" for="cbx">
+        <span>
+            <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </svg>
+        </span>
+        <span>Большие</span>
+    </label>
+    <input class="inp-cbx" id="cbx2" type="checkbox" style="display: none" name="checkbox2_small" value="true" onchange="checkAddress(this)"/>
+    <label class="cbx" for="cbx2">
+        <span>
+            <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </svg>
+        </span>
+        <span>Компактные</span>
+    </label>
+    <input type="submit" value="Применить" class="accept_button"/>
+}
+<br>
+
+<div id="sorting_houses">
+    @Html.Partial("_CatalogOfHouses")
+</div>
+
